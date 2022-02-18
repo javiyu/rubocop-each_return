@@ -37,7 +37,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add the following line to your `.rubocop.yml`
+
+```
+require:
+ - rubocop-each_return
+ ```
 
 ## Development
 
