@@ -8,7 +8,7 @@ to store it in another variable.
 Most probably the author thought she was calling `map` and wanted to use the result, this
 cop helps the developer identify those cases.
 
-It can autocorrect this offense by removing the variable and the operator of a lvasgn.
+It can autocorrect this offense by removing the variable and the operator of a lvasgn. Autocorrect in this case means removing the assigment since it has no effect but the author could also want to change `each` for `map`, this gem can not help with that and the author should identify that potential problem.
 
 ```
 # incorrect
