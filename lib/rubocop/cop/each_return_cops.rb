@@ -10,12 +10,13 @@ module RuboCop
     # to store it in another variable.
     # Most probably the author thought she was calling `map` and wanted to use the result, this
     # cop helps the developer identify those cases.
+    # It can autocorrect this offense by removing the variable and the operator of a lvasgn.
     #
     # @example
-    #   # bad
+    #   # incorrect
     #   value = object.each { |x| x*2 }
     #
-    #   # good
+    #   # correct
     #   object.each { |x| operation! }
     #   value = object.map { |x| x*2 }
     #

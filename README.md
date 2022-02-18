@@ -1,8 +1,23 @@
 # Rubocop::EachReturn
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rubocop/each_return`. To experiment with that code, run `bin/console` for an interactive prompt.
+This cop checks for the use of return values when calling `each` method.
 
-TODO: Delete this and the text above, and describe your gem
+`each` method just returns the same object that was originally being called, so it makes no sense
+to store it in another variable.
+
+Most probably the author thought she was calling `map` and wanted to use the result, this
+cop helps the developer identify those cases.
+
+It can autocorrect this offense by removing the variable and the operator of a lvasgn.
+
+```
+# incorrect
+value = object.each { |x| x*2 }
+
+# correct
+object.each { |x| operation! }
+value = object.map { |x| x*2 }
+```
 
 ## Installation
 
@@ -32,7 +47,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rubocop-each_return.
+Bug reports and pull requests are welcome on GitHub at https://github.com/javiyu/rubocop-each_return.
 
 ## License
 
